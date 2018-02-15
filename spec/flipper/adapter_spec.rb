@@ -69,29 +69,29 @@ RSpec.describe Flipper::Adapter do
       expect(feature.boolean_value).to be(true)
       expect(feature.groups_value).to eq(Set[])
       expect(feature.actors_value).to eq(Set[])
-      expect(feature.percentage_of_actors_value).to be(0)
-      expect(feature.percentage_of_time_value).to be(0)
+      expect(feature.percentage_of_actors_value).to be_nil
+      expect(feature.percentage_of_time_value).to be_nil
 
       feature = destination_flipper[:preview_features]
       expect(feature.boolean_value).to be(false)
       expect(feature.actors_value).to eq(Set['1', '2', '3'])
       expected_groups = Set['developers', 'marketers', 'company', 'early_access']
       expect(feature.groups_value).to eq(expected_groups)
-      expect(feature.percentage_of_actors_value).to be(0)
-      expect(feature.percentage_of_time_value).to be(0)
+      expect(feature.percentage_of_actors_value).to eq(0)
+      expect(feature.percentage_of_time_value).to eq(0)
 
       feature = destination_flipper[:issues_next]
       expect(feature.boolean_value).to eq(false)
       expect(feature.actors_value).to eq(Set.new)
       expect(feature.groups_value).to eq(Set.new)
       expect(feature.percentage_of_actors_value).to be(25)
-      expect(feature.percentage_of_time_value).to be(0)
+      expect(feature.percentage_of_time_value).to eq(0)
 
       feature = destination_flipper[:verbose_logging]
       expect(feature.boolean_value).to eq(false)
       expect(feature.actors_value).to eq(Set.new)
       expect(feature.groups_value).to eq(Set.new)
-      expect(feature.percentage_of_actors_value).to be(0)
+      expect(feature.percentage_of_actors_value).to eq(0)
       expect(feature.percentage_of_time_value).to be(5)
     end
 
@@ -108,7 +108,7 @@ RSpec.describe Flipper::Adapter do
       expect(feature.percentage_of_time_value).to be(5)
 
       feature = destination_flipper[:verbose_logging]
-      expect(feature.percentage_of_time_value).to be(0)
+      expect(feature.percentage_of_time_value).to eq(0)
       expect(feature.percentage_of_actors_value).to be(25)
     end
 

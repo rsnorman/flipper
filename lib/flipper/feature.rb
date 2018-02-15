@@ -181,7 +181,7 @@ module Flipper
     #
     # Returns result of disable.
     def disable_percentage_of_time
-      disable Types::PercentageOfTime.new(0)
+      disable Types::PercentageOfTime.new(nil)
     end
 
     # Public: Disables a feature for a percentage of actors.
@@ -191,7 +191,7 @@ module Flipper
     #
     # Returns result of disable.
     def disable_percentage_of_actors
-      disable Types::PercentageOfActors.new(0)
+      disable Types::PercentageOfActors.new(nil)
     end
 
     # Public: Returns state for feature (:on, :off, or :conditional).

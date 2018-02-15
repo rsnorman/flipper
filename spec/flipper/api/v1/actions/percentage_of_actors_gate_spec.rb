@@ -51,7 +51,7 @@ RSpec.describe Flipper::Api::V1::Actions::PercentageOfActorsGate do
 
     it 'returns decorated feature with gate disabled' do
       gate = json_response['gates'].find { |gate| gate['name'] == 'percentage_of_actors' }
-      expect(gate['value']).to eq('0')
+      expect(gate['value']).to eq('')
     end
   end
 
@@ -65,7 +65,7 @@ RSpec.describe Flipper::Api::V1::Actions::PercentageOfActorsGate do
 
     it 'returns decorated feature with gate value set to 0 regardless of percentage requested' do
       gate = json_response['gates'].find { |gate| gate['name'] == 'percentage_of_actors' }
-      expect(gate['value']).to eq('0')
+      expect(gate['value']).to eq('')
     end
   end
 
@@ -81,7 +81,7 @@ RSpec.describe Flipper::Api::V1::Actions::PercentageOfActorsGate do
     it 'returns decorated feature with gate disabled' do
       expect(last_response.status).to eq(200)
       gate = json_response['gates'].find { |gate| gate['name'] == 'percentage_of_actors' }
-      expect(gate['value']).to eq('0')
+      expect(gate['value']).to eq('')
     end
   end
 

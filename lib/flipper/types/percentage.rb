@@ -2,6 +2,11 @@ module Flipper
   module Types
     class Percentage < Type
       def initialize(value)
+        unless value
+          @value = nil
+          return
+        end
+
         value = Typecast.to_percentage(value)
 
         if value < 0 || value > 100
